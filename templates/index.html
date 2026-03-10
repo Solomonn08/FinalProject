@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card card-body shadow-sm">
+            <h5>Add New Assignment</h5>
+            <form action="/add" method="POST">
+                <div class="mb-3">
+                    <input type="text" name="subject" class="form-control" placeholder="Subject (e.g. Math)" required>
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="title" class="form-control" placeholder="Assignment Title" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label small">Due Date</label>
+                    <input type="date" name="due_date" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Save Assignment</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <table class="table table-hover bg-white shadow-sm rounded">
+            <thead class="table-dark">
+                <tr>
+                    <th>Subject</th>
+                    <th>Assignment</th>
+                    <th>Due Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in assignments %}
+                <tr class="{{ 'table-danger' if task[3] < today else '' }}">
+                    <td><strong>{{ task[1] }}</strong></td>
+                    <td>{{ task[2] }}</td>
+                    <td>{{ task[3] }}</td>
+                    <td>
+                        <a href="{{ url_for('delete_assignment', item_id=task[0]) }}" class="btn btn-sm btn-outline-danger">Done</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% if not assignments %}
+            <p class="text-center text-muted">No assignments pending! 🎉</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
