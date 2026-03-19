@@ -1,19 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="{% if current_user.is_authenticated and current_user.dark_mode %}dark-theme{% endif %}">
 <head>
-    <meta charset="UTF-8">
-    <title>Assignment Tracker</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --red: #8B0000; --gold: #D4AF37; --bg: #fff; --text: #000; --card: #f4f4f4; }
+        .dark-theme { --bg: #121212; --text: #fff; --card: #1e1e1e; }
+        body { background: var(--bg); color: var(--text); font-family: sans-serif; margin: 0; padding-bottom: 80px; transition: 0.3s; }
+        header { background: var(--red); color: white; padding: 15px; text-align: center; border-bottom: 3px solid var(--gold); position: sticky; top:0; z-index:10; }
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: var(--red); display: flex; justify-content: space-around; padding: 12px 0; border-top: 2px solid var(--gold); z-index:100; }
+        .nav-item { color: white; text-decoration: none; text-align: center; font-size: 11px; }
+        .nav-item i { display: block; font-size: 22px; color: var(--gold); margin-bottom: 3px; }
+        .alert { background: var(--gold); color: black; padding: 10px; text-align: center; }
+        .container { padding: 15px; }
+    </style>
 </head>
-<body class="bg-light">
-    <nav class="navbar navbar-dark bg-dark mb-4">
-        <div class="container">
-            <span class="navbar-brand mb-0 h1">🎓 Assignment Tracker Pro</span>
-        </div>
-    </nav>
-
+<body>
+    <header><h2>ÄLEM BUSINESS</h2></header>
+    {% with msgs = get_flashed_messages() %}{% for m in msgs %}<div class="alert">{{ m }}</div>{% endfor %}{% endwith %}
+    
     <div class="container">
         {% block content %}{% endblock %}
     </div>
+
+    <nav class="bottom-nav">
+        <a href="/" class="nav-item"><i class="fa fa-home"></i>Home</a>
+        <a href="/culture" class="nav-item"><i class="fa fa-landmark"></i>Culture</a>
+        <a href="/cart" class="nav-item"><i class="fa fa-shopping-bag"></i>Cart</a>
+        <a href="/profile" class="nav-item"><i class="fa fa-user"></i>Profile</a>
+        <a href="/settings" class="nav-item"><i class="fa fa-cog"></i>Settings</a>
+    </nav>
 </body>
 </html>

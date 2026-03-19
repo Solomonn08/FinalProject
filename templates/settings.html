@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="background: var(--card); padding: 20px; border-radius: 10px;">
+    <h3>Sazlamalar</h3>
+    <form method="POST" style="display: flex; justify-content: space-between; align-items: center;">
+        <span>Dark Mode</span>
+        <input type="checkbox" onchange="this.form.submit()" {% if current_user.dark_mode %}checked{% endif %} style="width: 20px; height: 20px;">
+    </form>
+</div>
+{% endblock %}

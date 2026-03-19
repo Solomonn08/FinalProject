@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<img src="{{ product.img }}" style="width: 100%; border-radius: 15px;">
+<h2>{{ product.name }}</h2>
+<h3 style="color: var(--red);">{{ product.price }} TMT</h3>
+<p>{{ product.desc }}</p>
+
+<a href="/add_to_cart/{{ product.id }}" style="display: block; text-align: center; background: var(--red); color: white; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; margin: 20px 0;">
+    Sebede goş (Add to Cart)
+</a>
+
+<hr>
+<h4>AI-Generated Reviews</h4>
+{% for review in reviews %}
+<div style="background: var(--card); padding: 10px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid var(--gold);">
+    "{{ review }}"
+</div>
+{% endfor %}
+{% endblock %}
