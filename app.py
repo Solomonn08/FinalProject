@@ -16,7 +16,7 @@ login_manager.login_view = 'login'
 
 # --- MODELS ---
 class User(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True) # FIXED: changed from int to db.Integer
+    id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
     dark_mode = db.Column(db.Boolean, default=False)
@@ -71,19 +71,22 @@ def product_detail(pid):
     ai_reviews = random.sample(reviews, 2)
     return render_template('product.html', product=p, reviews=ai_reviews)
 
-@app.route('/add_to_cart/<int:pid>')
+# FIXED: Added methods=['POST'] and matched 'pid' to HTML
+@app.route('/add_to_cart/<int:pid>', methods=['POST'])
 @login_required
 def add_to_cart(pid):
-    if 'cart' not in session: session['cart'] = []
+    if 'cart' not in session:
+        session['cart'] = []
     session['cart'].append(pid)
     session.modified = True
     flash("Sebede goşuldy!")
-    return redirect(url_for('home'))
+    return redirect(url_for('cart'))
 
 @app.route('/cart')
 @login_required
 def cart():
     cart_ids = session.get('cart', [])
+    # Get details for every ID in the cart session
     items = [p for p in PRODUCTS if p['id'] in cart_ids]
     total = sum(i['price'] for i in items)
     return render_template('cart.html', items=items, total=total)
@@ -97,10 +100,6 @@ def settings():
         return redirect(url_for('settings'))
     return render_template('settings.html')
 
-@app.route('/profile')
-@login_required
-def profile(): return render_template('profile.html')
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -108,6 +107,7 @@ def login():
         if user and check_password_hash(user.password, request.form['password']):
             login_user(user)
             return redirect(url_for('home'))
+        flash("Ýalňyş ulanyjy ady ýa-da parol.")
     return render_template('login.html')
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -115,7 +115,8 @@ def register():
     if request.method == 'POST':
         pw = generate_password_hash(request.form['password'], method='pbkdf2:sha256')
         u = User(username=request.form['username'], password=pw)
-        db.session.add(u); db.session.commit()
+        db.session.add(u)
+        db.session.commit()
         return redirect(url_for('login'))
     return render_template('register.html')
 
