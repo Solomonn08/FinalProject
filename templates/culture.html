@@ -1,23 +1,127 @@
 {% extends "base.html" %}
 {% block content %}
-<div style="background: var(--card); padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-    <h2 style="color: var(--main-red); border-bottom: 2px solid var(--gold); padding-bottom: 10px;">Türkmen Medeniýeti</h2>
-    
-    <div style="margin: 20px 0;">
-        <img src="https://images.unsplash.com/photo-1523450031158-7118ae76c15b?w=800" 
-             style="width: 100%; border-radius: 10px; border: 1px solid var(--gold);">
+
+{% if is_search %}
+    <div class="search-results-header">
+        <h3>{{ _('Results for') }} "{{ query }}"</h3>
+        {% if products|length == 0 %}
+            <h4>{{ _('No items found. Try another word!') }}</h4>
+        {% endif %}
+    </div>
+{% endif %}
+
+{% if not request.args.get('category') and not is_search %}
+    <!-- Main Page with Hero Blocks -->
+    <div class="hero-section hero-women" onclick="window.location.href='/?category=Women'">
+        <div class="hero-content">
+            <h1 class="hero-title">{{ _('Women\'s Collection') }}</h1>
+            <p class="hero-subtitle">{{ _('Traditional & Modern Styles') }}</p>
+            <a href="/?category=Women" class="hero-btn">{{ _('View Collection') }}</a>
+        </div>
     </div>
 
-    <div style="line-height: 1.8; font-size: 16px; text-align: justify;">
-        {{ info }}
+    <div class="hero-section hero-men" onclick="window.location.href='/?category=Men'">
+        <div class="hero-content">
+            <h1 class="hero-title">{{ _('Men\'s Collection') }}</h1>
+            <p class="hero-subtitle">{{ _('Classic Turkmen Attire') }}</p>
+            <a href="/?category=Men" class="hero-btn">{{ _('View Collection') }}</a>
+        </div>
     </div>
 
-    <div style="margin-top: 30px; padding: 15px; background: rgba(212, 175, 55, 0.1); border-left: 4px solid var(--gold);">
-        <p style="margin: 0; font-style: italic; font-size: 14px;">
-            "Haly - türkmeniň kalby, ahalteke bedewi - türkmeniň ganaty."
-        </p>
+    <div class="hero-section hero-headwear" onclick="window.location.href='/?category=Headwear'">
+        <div class="hero-content">
+            <h1 class="hero-title">{{ _('Headwear') }}</h1>
+            <p class="hero-subtitle">{{ _('Traditional & Modern') }}</p>
+            <a href="/?category=Headwear" class="hero-btn">{{ _('View Collection') }}</a>
+        </div>
     </div>
-    
-    <p style="font-size: 12px; color: gray; margin-top: 20px;">Source: Wikipedia API</p>
-</div>
+
+    <div class="hero-section hero-carpets" onclick="window.location.href='/?category=Carpets'">
+        <div class="hero-content">
+            <h1 class="hero-title">{{ _('Handmade Carpets') }}</h1>
+            <p class="hero-subtitle">{{ _('Authentic Turkmen Artistry') }}</p>
+            <a href="/?category=Carpets" class="hero-btn">{{ _('View Collection') }}</a>
+        </div>
+    </div>
+
+    <div class="hero-section hero-accessories" onclick="window.location.href='/?category=Accessories'">
+        <div class="hero-content">
+            <h1 class="hero-title">{{ _('Accessories') }}</h1>
+            <p class="hero-subtitle">{{ _('Bracelets • Earrings • Rings') }}</p>
+            <a href="/?category=Accessories" class="hero-btn">{{ _('View Collection') }}</a>
+        </div>
+    </div>
+
+    <div class="hero-section hero-bags" onclick="window.location.href='/?category=Bags'">
+        <div class="hero-content">
+            <h1 class="hero-title">{{ _('Traditional Bags') }}</h1>
+            <p class="hero-subtitle">{{ _('Elegant & Functional') }}</p>
+            <a href="/?category=Bags" class="hero-btn">{{ _('View Collection') }}</a>
+        </div>
+    </div>
+
+    <div class="hero-section hero-tahya" onclick="window.location.href='/?category=Tahýa'">
+        <div class="hero-content">
+            <h1 class="hero-title">{{ _('Tahýa Collection') }}</h1>
+            <p class="hero-subtitle">{{ _('Traditional Turkmen Headwear') }}</p>
+            <a href="/?category=Tahýa" class="hero-btn">{{ _('View Collection') }}</a>
+        </div>
+    </div>
+
+    <div class="hero-section hero-traditional" onclick="window.location.href='/?category=Traditional'">
+        <div class="hero-content">
+            <h1 class="hero-title">{{ _('Traditional Items') }}</h1>
+            <p class="hero-subtitle">{{ _('Cultural Heritage') }}</p>
+            <a href="/?category=Traditional" class="hero-btn">{{ _('View Collection') }}</a>
+        </div>
+    </div>
+
+{% else %}
+    <!-- Category Page with Products -->
+    <div style="display: flex; overflow-x: auto; gap: 10px; padding: 10px 0; scrollbar-width: none;">
+        <a href="/" style="padding: 8px 15px; background: var(--card); border: 1px solid var(--gold); border-radius: 20px; text-decoration: none; color: var(--text); white-space: nowrap;">← Back to Home</a>
+        {% for cat in categories %}
+        <a href="/?category={{ cat }}" style="padding: 8px 15px; background: var(--card); border: 1px solid var(--gold); border-radius: 20px; text-decoration: none; color: var(--text); white-space: nowrap;">{{ cat }}</a>
+        {% endfor %}
+    </div>
+
+    <!-- Subcategories for Accessories -->
+    {% if request.args.get('category') == 'Accessories' %}
+    <div style="display: flex; overflow-x: auto; gap: 10px; padding: 10px 0; scrollbar-width: none; border-top: 1px solid #eee; margin-top: 10px;">
+        <a href="/?category=Accessories" style="padding: 8px 15px; background: var(--card); border: 1px solid var(--gold); border-radius: 20px; text-decoration: none; color: var(--text); white-space: nowrap; font-weight: bold;">All Accessories</a>
+        <a href="/?category=Accessories&subcategory=Bracelet" style="padding: 8px 15px; background: var(--card); border: 1px solid var(--gold); border-radius: 20px; text-decoration: none; color: var(--text); white-space: nowrap;">Bracelets</a>
+        <a href="/?category=Accessories&subcategory=Earrings" style="padding: 8px 15px; background: var(--card); border: 1px solid var(--gold); border-radius: 20px; text-decoration: none; color: var(--text); white-space: nowrap;">Earrings</a>
+        <a href="/?category=Accessories&subcategory=Rings" style="padding: 8px 15px; background: var(--card); border: 1px solid var(--gold); border-radius: 20px; text-decoration: none; color: var(--text); white-space: nowrap;">Rings</a>
+    </div>
+    {% endif %}
+
+    <div class="product-grid">
+        {% for p in products %}
+        <div class="product-card">
+            <a href="/product/{{ p.id }}" style="text-decoration: none; color: inherit;">
+                <img src="{{ p.img }}" alt="{{ p.name }}">
+                <div>
+                    <p style="margin: 0; font-size: 16px; font-weight: bold;">{{ get_translated_product_name(p.name, p.category) }}</p>
+                    <b style="color: var(--red); font-size: 18px;">{{ p.price }} TMT</b>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<script>
+    // Add hover effects to hero sections
+    document.querySelectorAll('.hero-section').forEach(section => {
+        section.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.02)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+        
+        section.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+</script>
+
 {% endblock %}
