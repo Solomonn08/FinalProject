@@ -14,6 +14,39 @@ db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
+# --- TRANSLATIONS ---
+TRANSLATIONS = {
+    'tm': {
+        'home': 'Baş sahypa', 'culture': 'Medeniýet', 'cart': 'Sebet', 'settings': 'Sazlamalar',
+        'add_to_cart': 'Sebede goş', 'added': 'sebede goşuldy!', 'total': 'Jemi',
+        'checkout': 'Sargydy tassykla', 'empty': 'Sebediňiz boş.', 'delivery': 'Eltip bermek dowam edýär!',
+        'login': 'Giriş', 'join': 'Agza bol', 'logout': 'Çykyş'
+    },
+    'en': {
+        'home': 'Home', 'culture': 'Culture', 'cart': 'Cart', 'settings': 'Settings',
+        'add_to_cart': 'Add to Cart', 'added': 'added to cart!', 'total': 'Total',
+        'checkout': 'Proceed to Checkout', 'empty': 'Your cart is empty.', 'delivery': 'Delivery is in process!',
+        'login': 'Login', 'join': 'Join', 'logout': 'Logout'
+    },
+    'ru': {
+        'home': 'Главная', 'culture': 'Культура', 'cart': 'Корзина', 'settings': 'Настройки',
+        'add_to_cart': 'В корзину', 'added': 'добавлено в корзину!', 'total': 'Итого',
+        'checkout': 'Оформить заказ', 'empty': 'Ваша корзина пуста.', 'delivery': 'Доставка в процессе!',
+        'login': 'Войти', 'join': 'Регистрация', 'logout': 'Выйти'
+    }
+}
+
+@app.context_processor
+def inject_lang():
+    lang = session.get('lang', 'tm')
+    return dict(lang=TRANSLATIONS[lang])
+
+@app.route('/set_lang/<l>')
+def set_lang(l):
+    if l in ['tm', 'en', 'ru']:
+        session['lang'] = l
+    return redirect(request.referrer or url_for('home'))
+
 # --- MODELS ---
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -21,12 +54,11 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(200), nullable=False)
     dark_mode = db.Column(db.Boolean, default=False)
 
-# --- USER LOADER ---
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-# --- GENERATED BUSINESS DATA ---
+# --- DATA ---
 CATEGORIES = ["Tahýa", "Carpets", "Accessories", "Women", "Men"]
 IMG_URLS = {
     "Tahýa": "https://images.unsplash.com/photo-1590736912183-7d6182f978ad?w=500",
@@ -67,26 +99,25 @@ def culture():
 @app.route('/product/<int:pid>')
 def product_detail(pid):
     p = next((i for i in PRODUCTS if i['id'] == pid), None)
-    reviews = ["Great quality!", "Very traditional.", "Excellent handmade work.", "Beautiful colors!"]
-    ai_reviews = random.sample(reviews, 2)
-    return render_template('product.html', product=p, reviews=ai_reviews)
+    return render_template('product.html', product=p)
 
-# FIXED: Added methods=['POST'] and matched 'pid' to HTML
 @app.route('/add_to_cart/<int:pid>', methods=['POST'])
 @login_required
 def add_to_cart(pid):
     if 'cart' not in session:
         session['cart'] = []
-    session['cart'].append(pid)
-    session.modified = True
-    flash("Sebede goşuldy!")
+    p = next((i for i in PRODUCTS if i['id'] == pid), None)
+    if p:
+        session['cart'].append(pid)
+        session.modified = True
+        flash(f"{p['name']} {TRANSLATIONS[session.get('lang', 'tm')]['added']}")
+    # Redirect directly to cart to "proceed"
     return redirect(url_for('cart'))
 
 @app.route('/cart')
 @login_required
 def cart():
     cart_ids = session.get('cart', [])
-    # Get details for every ID in the cart session
     items = [p for p in PRODUCTS if p['id'] in cart_ids]
     total = sum(i['price'] for i in items)
     return render_template('cart.html', items=items, total=total)
@@ -107,7 +138,7 @@ def login():
         if user and check_password_hash(user.password, request.form['password']):
             login_user(user)
             return redirect(url_for('home'))
-        flash("Ýalňyş ulanyjy ady ýa-da parol.")
+        flash("Error")
     return render_template('login.html')
 
 @app.route('/register', methods=['GET', 'POST'])

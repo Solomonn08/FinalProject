@@ -3,51 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turkmen Heritage</title>
+    <title>Alem</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { padding-bottom: 80px; background-color: #f8f9fa; transition: 0.3s; }
+        body { background-color: #f8f9fa; transition: 0.3s; }
         body.dark-mode { background-color: #121212; color: #ffffff; }
-        .dark-mode .card, .dark-mode .bottom-nav, .dark-mode .navbar { background-color: #1e1e1e; border-color: #333; color: white; }
+        .dark-mode .card, .dark-mode .navbar, .dark-mode .offcanvas { background-color: #1e1e1e; border-color: #333; color: white; }
         .dark-mode .nav-link, .dark-mode .navbar-brand { color: white !important; }
         .navbar { border-bottom: 1px solid #eee; background-color: white; }
-        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: white; border-top: 1px solid #ddd; display: flex; justify-content: space-around; padding: 12px 0; z-index: 1000; }
-        .bottom-nav a { text-decoration: none; color: #555; text-align: center; font-size: 11px; font-weight: 600; }
-        .bottom-nav span { display: block; font-size: 20px; }
+        .menu-link { padding: 15px; display: block; text-decoration: none; color: #333; font-weight: 600; border-bottom: 1px solid #f1f1f1; }
+        .dark-mode .menu-link { color: white; border-bottom: 1px solid #333; }
     </style>
 </head>
 <body id="mainBody">
 
-<nav class="navbar navbar-expand-lg mb-3">
+<nav class="navbar sticky-top shadow-sm">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="/">🇹🇲 HERITAGE</a>
+        <button class="btn btn-outline-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu">☰</button>
+        <a class="navbar-brand fw-bold ms-3" href="/">🇹🇲 Alem</a>
         <div class="ms-auto">
             {% if not current_user.is_authenticated %}
-                <a href="/login" class="btn btn-sm btn-outline-dark me-2">Login</a>
-                <a href="/register" class="btn btn-sm btn-primary">Join</a>
+                <a href="/login" class="btn btn-sm btn-outline-dark">{{ lang.login }}</a>
             {% else %}
-                <span class="small me-2">Hi, {{ current_user.username }}</span>
-                <a href="/logout" class="btn btn-sm btn-link text-danger text-decoration-none">Logout</a>
+                <a href="/logout" class="btn btn-sm btn-link text-danger text-decoration-none">{{ lang.logout }}</a>
             {% endif %}
         </div>
     </div>
 </nav>
 
-<div class="container">
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-bold">Alem</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+        <div class="p-3 border-bottom bg-light">
+            <small class="text-muted d-block mb-2">Language / Dil</small>
+            <a href="/set_lang/tm" class="btn btn-sm btn-outline-primary">TM</a>
+            <a href="/set_lang/en" class="btn btn-sm btn-outline-primary">EN</a>
+            <a href="/set_lang/ru" class="btn btn-sm btn-outline-primary">RU</a>
+        </div>
+        <a href="/" class="menu-link">🏠 {{ lang.home }}</a>
+        <a href="/culture" class="menu-link">🇹🇲 {{ lang.culture }}</a>
+        <a href="/cart" class="menu-link">🛒 {{ lang.cart }}</a>
+        <a href="/settings" class="menu-link">⚙️ {{ lang.settings }}</a>
+    </div>
+</div>
+
+<div class="container mt-3">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
     {% block content %}{% endblock %}
 </div>
 
-<nav class="bottom-nav">
-    <a href="/"><span>🏠</span>Home</a>
-    <a href="/culture"><span>🇹🇲</span>Culture</a>
-    <a href="/cart"><span>🛒</span>Cart</a>
-    <a href="/settings"><span>⚙️</span>Settings</a>
-</nav>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    if (localStorage.getItem('theme') === 'dark') {
-        document.getElementById('mainBody').classList.add('dark-mode');
-    }
+    if (localStorage.getItem('theme') === 'dark') document.getElementById('mainBody').classList.add('dark-mode');
 </script>
 </body>
 </html>
