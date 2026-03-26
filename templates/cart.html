@@ -1,29 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container mt-4">
-    <h2 class="fw-bold mb-4">{{ lang.cart }}</h2>
+    <h2 class="fw-bold mb-4">Your Shopping Cart</h2>
     {% if items %}
         <div class="card shadow-sm">
             <div class="card-body">
                 <table class="table">
-                    {% for item in items %}
-                    <tr>
-                        <td>{{ item.name }}</td>
-                        <td class="text-end">{{ item.price }} TMT</td>
-                    </tr>
-                    {% endfor %}
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th class="text-end">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                        <tr>
+                            <td>{{ item.name }}</td>
+                            <td class="text-end">{{ item.price }} TMT</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
-                <div class="d-flex justify-content-between mt-4">
-                    <h4 class="fw-bold">{{ lang.total }}:</h4>
+                <div class="d-flex justify-content-between align-items-center mt-4">
+                    <h4 class="fw-bold">Total:</h4>
                     <h4 class="text-primary fw-bold">{{ total }} TMT</h4>
                 </div>
-                <button onclick="alert('{{ lang.delivery }}')" class="btn btn-success w-100 py-3 mt-3 fw-bold">{{ lang.checkout }}</button>
+                <button class="btn btn-success w-100 py-3 mt-3 fw-bold">Proceed to Checkout</button>
             </div>
         </div>
     {% else %}
         <div class="text-center py-5">
-            <p>{{ lang.empty }}</p>
-            <a href="/" class="btn btn-primary">{{ lang.home }}</a>
+            <span style="font-size: 50px;">🛒</span>
+            <p class="mt-3 text-muted">Your cart is empty.</p>
+            <a href="/" class="btn btn-primary px-4">Start Shopping</a>
         </div>
     {% endif %}
 </div>
