@@ -1,0 +1,195 @@
+# Turkmen translations for Turkmen Heritage
+# Copyright (C) 2026 Turkmen Heritage
+# This file is distributed under the same license as the Turkmen Heritage project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Turkmen Heritage 1.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-03-26 17:13+0500\n"
+"PO-Revision-Date: 2026-03-26 17:13+0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: tk\n"
+"Language-Team: tk <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: templates/base.html:10
+msgid "Search"
+msgstr "Gözleg"
+
+#: templates/base.html:14
+msgid "Your Account"
+msgstr "Profil"
+
+#: templates/base.html:15
+msgid "Sign In"
+msgstr "Giriş et"
+
+#: templates/base.html:16
+msgid "Create"
+msgstr "Döret"
+
+#: templates/base.html:17
+msgid "Home"
+msgstr "Baş sahypa"
+
+#: templates/base.html:18
+msgid "Cart"
+msgstr "Sebet"
+
+#: templates/base.html:19
+msgid "Settings"
+msgstr "Sazlamalar"
+
+#: templates/base.html:20
+msgid "View Collection"
+msgstr "Kolleksiýany gör"
+
+#: templates/base.html:21
+msgid "Traditional Turkmen Headwear"
+msgstr "Gelenji turkmen baş gapyrlary"
+
+#: templates/base.html:22
+msgid "Authentic Turkmen Artistry"
+msgstr "Hakyky turkmen sanygaty"
+
+#: templates/base.html:23
+msgid "Elegant & Functional"
+msgstr "Elegant we funksional"
+
+#: templates/base.html:24
+msgid "Bracelets • Earrings • Rings"
+msgstr "Bilezikler • Ýüzükler • Sazarylar"
+
+#: templates/base.html:25
+msgid "Traditional & Modern Styles"
+msgstr "Gelenji we modern stiller"
+
+#: templates/base.html:26
+msgid "Classic Turkmen Attire"
+msgstr "Klassik turkmen gapyrlary"
+
+#: templates/base.html:27
+msgid "Traditional & Modern"
+msgstr "Gelenji we modern"
+
+#: templates/base.html:28
+msgid "Handmade Carpets"
+msgstr "Eli bilen tökülän gylymlar"
+
+#: templates/base.html:29
+msgid "Traditional Bags"
+msgstr "Gelenji çantalar"
+
+#: templates/base.html:30
+msgid "Tahýa Collection"
+msgstr "Tahýa kolleksiýasy"
+
+#: templates/base.html:31
+msgid "Cultural Heritage"
+msgstr "Madaniýet bagyşy"
+
+#: templates/base.html:32
+msgid "Traditional Items"
+msgstr "Gelenji önümler"
+
+#: templates/base.html:33
+msgid "Women's Collection"
+msgstr "Aýal kolleksiýasy"
+
+#: templates/base.html:34
+msgid "Men's Collection"
+msgstr "Erkek kolleksiýasy"
+
+#: templates/base.html:35
+msgid "Headwear"
+msgstr "Baş gapyrlary"
+
+#: templates/base.html:36
+msgid "Accessories"
+msgstr "Aksessuarlar"
+
+#: templates/base.html:37
+msgid "Bags"
+msgstr "Çantalar"
+
+#: templates/base.html:38
+msgid "Carpets"
+msgstr "Gylymlar"
+
+#: templates/base.html:39
+msgid "Tahýa"
+msgstr "Tahýa"
+
+#: templates/base.html:40
+msgid "Traditional"
+msgstr "Gelenji"
+
+#: templates/base.html:41
+msgid "TM Culture"
+msgstr "TM Madaniýeti"
+
+#: templates/base.html:42
+msgid "TM HERITAGE"
+msgstr "TM MIRAS"
+
+#: templates/base.html:43
+msgid "Enter your email"
+msgstr "Email adresiňizi giriziň"
+
+#: templates/base.html:44
+msgid "Password"
+msgstr "Parol"
+
+#: templates/base.html:45
+msgid "forgot your password?"
+msgstr "parolyňyzy unutdyňizmi?"
+
+#: templates/base.html:46
+msgid "Continue"
+msgstr "Dowam et"
+
+#: templates/base.html:47
+msgid "Create password"
+msgstr "Parol döret"
+
+#: templates/base.html:48
+msgid "Confirm password"
+msgstr "Paroly tassyklaň"
+
+#: templates/base.html:49
+msgid "Create Account"
+msgstr "Hasap döret"
+
+#: templates/base.html:50
+msgid "By continuing, you agree to our Privacy Policy and Terms of Service."
+msgstr "Dowam edýänlik bilen, Gizlinlik Siýasaty we Xidmet şertleri bilen hemfikir bolýarsyňyz."
+
+#: templates/base.html:51
+msgid "Search products..."
+msgstr " önümleri gözle..."
+
+#: templates/base.html:52
+msgid "Results for"
+msgstr "Netijeler"
+
+#: templates/base.html:53
+msgid "No items found. Try another word!"
+msgstr "Hiç zat tapylmady. Başga söz synap görüň!"
+
+#: templates/base.html:54
+msgid "EN"
+msgstr "EN"
+
+#: templates/base.html:55
+msgid "RU"
+msgstr "RU"
+
+#: templates/base.html:56
+msgid "TK"
+msgstr "TK"

@@ -1,0 +1,196 @@
+# Russian translations for Turkmen Heritage
+# Copyright (C) 2026 Turkmen Heritage
+# This file is distributed under the same license as the Turkmen Heritage project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Turkmen Heritage 1.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-03-26 17:10+0500\n"
+"PO-Revision-Date: 2026-03-26 17:10+0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ru\n"
+"Language-Team: ru <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: templates/base.html:10
+msgid "Search"
+msgstr "Поиск"
+
+#: templates/base.html:14
+msgid "Your Account"
+msgstr "Ваш аккаунт"
+
+#: templates/base.html:15
+msgid "Sign In"
+msgstr "Войти"
+
+#: templates/base.html:16
+msgid "Create"
+msgstr "Создать"
+
+#: templates/base.html:17
+msgid "Home"
+msgstr "Главная"
+
+#: templates/base.html:18
+msgid "Cart"
+msgstr "Корзина"
+
+#: templates/base.html:19
+msgid "Settings"
+msgstr "Настройки"
+
+#: templates/base.html:20
+msgid "View Collection"
+msgstr "Посмотреть коллекцию"
+
+#: templates/base.html:21
+msgid "Traditional Turkmen Headwear"
+msgstr "Традиционные туркменские головные уборы"
+
+#: templates/base.html:22
+msgid "Authentic Turkmen Artistry"
+msgstr "Настоящее туркменское искусство"
+
+#: templates/base.html:23
+msgid "Elegant & Functional"
+msgstr "Элегантно и функционально"
+
+#: templates/base.html:24
+msgid "Bracelets • Earrings • Rings"
+msgstr "Браслеты • Серьги • Кольца"
+
+#: templates/base.html:25
+msgid "Traditional & Modern Styles"
+msgstr "Традиционные и современные стили"
+
+#: templates/base.html:26
+msgid "Classic Turkmen Attire"
+msgstr "Классическая туркменская одежда"
+
+#: templates/base.html:27
+msgid "Traditional & Modern"
+msgstr "Традиционные и современные"
+
+#: templates/base.html:28
+msgid "Handmade Carpets"
+msgstr "Ручные ковры"
+
+#: templates/base.html:29
+msgid "Traditional Bags"
+msgstr "Традиционные сумки"
+
+#: templates/base.html:30
+msgid "Tahýa Collection"
+msgstr "Коллекция Тахыя"
+
+#: templates/base.html:31
+msgid "Cultural Heritage"
+msgstr "Культурное наследие"
+
+#: templates/base.html:32
+msgid "Traditional Items"
+msgstr "Традиционные изделия"
+
+#: templates/base.html:33
+msgid "Women's Collection"
+msgstr "Женская коллекция"
+
+#: templates/base.html:34
+msgid "Men's Collection"
+msgstr "Мужская коллекция"
+
+#: templates/base.html:35
+msgid "Headwear"
+msgstr "Головные уборы"
+
+#: templates/base.html:36
+msgid "Accessories"
+msgstr "Аксессуары"
+
+#: templates/base.html:37
+msgid "Bags"
+msgstr "Сумки"
+
+#: templates/base.html:38
+msgid "Carpets"
+msgstr "Ковры"
+
+#: templates/base.html:39
+msgid "Tahýa"
+msgstr "Тахыя"
+
+#: templates/base.html:40
+msgid "Traditional"
+msgstr "Традиционные"
+
+#: templates/base.html:41
+msgid "TM Culture"
+msgstr "ТМ Культура"
+
+#: templates/base.html:42
+msgid "TM HERITAGE"
+msgstr "ТМ НАСЛЕДИЕ"
+
+#: templates/base.html:43
+msgid "Enter your email"
+msgstr "Введите ваш email"
+
+#: templates/base.html:44
+msgid "Password"
+msgstr "Пароль"
+
+#: templates/base.html:45
+msgid "forgot your password?"
+msgstr "забыли пароль?"
+
+#: templates/base.html:46
+msgid "Continue"
+msgstr "Продолжить"
+
+#: templates/base.html:47
+msgid "Create password"
+msgstr "Создать пароль"
+
+#: templates/base.html:48
+msgid "Confirm password"
+msgstr "Подтвердить пароль"
+
+#: templates/base.html:49
+msgid "Create Account"
+msgstr "Создать аккаунт"
+
+#: templates/base.html:50
+msgid "By continuing, you agree to our Privacy Policy and Terms of Service."
+msgstr "Продолжая, вы соглашаетесь с нашей Политикой конфиденциальности и Условиями использования."
+
+#: templates/base.html:51
+msgid "Search products..."
+msgstr "Поиск товаров..."
+
+#: templates/base.html:52
+msgid "Results for"
+msgstr "Результаты поиска для"
+
+#: templates/base.html:53
+msgid "No items found. Try another word!"
+msgstr "Товары не найдены. Попробуйте другое слово!"
+
+#: templates/base.html:54
+msgid "EN"
+msgstr "АН"
+
+#: templates/base.html:55
+msgid "RU"
+msgstr "РУ"
+
+#: templates/base.html:56
+msgid "TK"
+msgstr "ТК"
