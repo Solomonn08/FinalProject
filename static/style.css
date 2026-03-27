@@ -1,0 +1,23 @@
+/* Base colors */
+:root {
+    --primary: #c00;   /* Red */
+    --secondary: #fff; /* White */
+    --text: #333;
+    --card: #fff;
+    --gold: #c00;
+    --red: #c00;
+}
+
+/* Body */
+body {
+    background-color: var(--secondary);
+    color: var(--text);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+.modern-header {
+    background: var(--secondary);
+   
