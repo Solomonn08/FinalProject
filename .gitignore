@@ -5,3 +5,4 @@ instance/
 .DS_Store
 turkmen_biz.db
 instance/
+.env
